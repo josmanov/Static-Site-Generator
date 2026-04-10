@@ -1,6 +1,6 @@
 import unittest
 
-from helperfunctions import extract_markdown_images, extract_markdown_links
+from splitnodes import extract_markdown_images, extract_markdown_links
 
 
 class TestTextNode(unittest.TestCase):
