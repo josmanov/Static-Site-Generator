@@ -1,5 +1,5 @@
 import unittest
-from block import markdown_to_blocks, block_to_block_type, BlockType
+from block import markdown_to_blocks, block_to_block_type, BlockType, quote_to_html
 
 class TestMarkdownToBlocks(unittest.TestCase):
 
@@ -67,6 +67,14 @@ This is a paragraph of text. It has some **bold** and _italic_ words inside of i
             block_to_block_type(block),
             BlockType.PARAGRAPH
         )
+
+    def test_quote_to_html_single_line(self):
+        node = quote_to_html("> this is a quote")
+        self.assertEqual(node.to_html(), "<blockquote>this is a quote</blockquote>")
+
+    def test_quote_to_html_multi_line(self):
+        node = quote_to_html("> this is\n> a multiline quote")
+        self.assertEqual(node.to_html(), "<blockquote>this is a multiline quote</blockquote>")
 
 
 if __name__ == "__main__":

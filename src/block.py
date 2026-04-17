@@ -77,15 +77,13 @@ def code_to_html(text):
     return ParentNode("pre", [text_node_to_html_node(node)])
 
 def quote_to_html(text):
-    hashtag_count = 0
-    for char in text:
-        if char == "#":
-            hashtag_count += 1
-        else:
-            break
-    strip_text = text.strip("# ")
-    children = text_to_children(strip_text)
-    return ParentNode(f"h{hashtag_count}", children)
+    lines = text.split("\n")
+    clean_lines = []
+    for line in lines:
+        clean_lines.append(line.lstrip("> "))
+    quote_text = " ".join(clean_lines)
+    children = text_to_children(quote_text)
+    return ParentNode("blockquote", children)
 
 def unordered_to_html(text):
     hashtag_count = 0
