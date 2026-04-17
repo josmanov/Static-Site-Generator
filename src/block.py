@@ -100,15 +100,9 @@ def ordered_to_html(text):
     return ParentNode("ol", items)
 
 def paragraph_to_html(text):
-    hashtag_count = 0
-    for char in text:
-        if char == "#":
-            hashtag_count += 1
-        else:
-            break
-    strip_text = text.strip("# ")
-    children = text_to_children(strip_text)
-    return ParentNode(f"h{hashtag_count}", children)
+    normalized = " ".join(text.split("\n"))
+    children = text_to_children(normalized)
+    return ParentNode("p", children)
 
 def text_to_children(text):
     nodes = []
