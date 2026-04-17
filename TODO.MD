@@ -4,6 +4,6 @@ CH4 L3
         [x] complete heading_to_html(text) function
         [x] complete code_to_html(text) function
         [x] complete quote_to_html(text) function
-        [] complete unordered_to_html(text) function
-        [] complete ordered_to_html(text) function
+        [x] complete unordered_to_html(text) function
+        [x] complete ordered_to_html(text) function
         [] compelte paragraph_to_html(text) function:

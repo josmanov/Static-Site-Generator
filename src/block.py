@@ -86,26 +86,18 @@ def quote_to_html(text):
     return ParentNode("blockquote", children)
 
 def unordered_to_html(text):
-    hashtag_count = 0
-    for char in text:
-        if char == "#":
-            hashtag_count += 1
-        else:
-            break
-    strip_text = text.strip("# ")
-    children = text_to_children(strip_text)
-    return ParentNode(f"h{hashtag_count}", children)
+    items = []
+    for line in text.split("\n"):
+        item_text = line[2:]
+        items.append(ParentNode("li", text_to_children(item_text)))
+    return ParentNode("ul", items)
 
 def ordered_to_html(text):
-    hashtag_count = 0
-    for char in text:
-        if char == "#":
-            hashtag_count += 1
-        else:
-            break
-    strip_text = text.strip("# ")
-    children = text_to_children(strip_text)
-    return ParentNode(f"h{hashtag_count}", children)
+    items = []
+    for line in text.split("\n"):
+        item_text = re.sub(r"^\d+\. ", "", line)
+        items.append(ParentNode("li", text_to_children(item_text)))
+    return ParentNode("ol", items)
 
 def paragraph_to_html(text):
     hashtag_count = 0

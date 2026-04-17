@@ -1,5 +1,5 @@
 import unittest
-from block import markdown_to_blocks, block_to_block_type, BlockType, quote_to_html
+from block import markdown_to_blocks, block_to_block_type, BlockType, quote_to_html, unordered_to_html, ordered_to_html
 
 class TestMarkdownToBlocks(unittest.TestCase):
 
@@ -75,6 +75,14 @@ This is a paragraph of text. It has some **bold** and _italic_ words inside of i
     def test_quote_to_html_multi_line(self):
         node = quote_to_html("> this is\n> a multiline quote")
         self.assertEqual(node.to_html(), "<blockquote>this is a multiline quote</blockquote>")
+
+    def test_unordered_to_html(self):
+        node = unordered_to_html("- first\n- second")
+        self.assertEqual(node.to_html(), "<ul><li>first</li><li>second</li></ul>")
+
+    def test_ordered_to_html(self):
+        node = ordered_to_html("1. first\n2. second")
+        self.assertEqual(node.to_html(), "<ol><li>first</li><li>second</li></ol>")
 
 
 if __name__ == "__main__":
