@@ -1,5 +1,5 @@
 import unittest
-from block import markdown_to_blocks, block_to_block_type, BlockType, quote_to_html, unordered_to_html, ordered_to_html, paragraph_to_html
+from block import markdown_to_blocks, block_to_block_type, BlockType, quote_to_html, unordered_to_html, ordered_to_html, paragraph_to_html, markdown_to_html_node
 
 class TestMarkdownToBlocks(unittest.TestCase):
 
@@ -88,9 +88,16 @@ This is a paragraph of text. It has some **bold** and _italic_ words inside of i
         node = paragraph_to_html("this is\na paragraph")
         self.assertEqual(node.to_html(), "<p>this is a paragraph</p>")
 
+    def test_markdown_to_html_node_wraps_in_div(self):
+        markdown = "Hello world"
+        node = markdown_to_html_node(markdown)
+        self.assertEqual(node.to_html(), "<div><p>Hello world</p></div>")
 
-if __name__ == "__main__":
-    unittest.main()
+    def test_markdown_to_html_node_multiple_blocks(self):
+        markdown = "# Title\n\n> quote"
+        node = markdown_to_html_node(markdown)
+        self.assertEqual(node.to_html(), "<div><h1>Title</h1><blockquote>quote</blockquote></div>")
+
 
 if __name__ == "__main__":
     unittest.main()
