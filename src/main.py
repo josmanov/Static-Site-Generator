@@ -7,9 +7,9 @@ def main():
     text_type = "link"
     url = "https://www.boot.dev"
     result = TextNode(text, text_type, url)
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    source_dir = os.path.join(project_root, "static")
-    dest_dir = os.path.join(project_root, "public")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    source_dir = os.path.join(script_dir, "static")
+    dest_dir = os.path.join(script_dir, "public")
 
     clear_public_dir(dest_dir)
     copy_directory_recursive(source_dir, dest_dir)

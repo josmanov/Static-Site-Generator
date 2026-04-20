@@ -16,4 +16,5 @@ CH5: L1
         [x] log path of each file thats copied for debugging
         [x] hook function to main function and test manually with file system
         [x] add public directory to .gitignore file.
-        [] check main.sh generates the public dir and everything is copied correctly
+        [x] check main.sh generates the public dir and everything is copied correctly
+        [] fix wrong path for index.css file
