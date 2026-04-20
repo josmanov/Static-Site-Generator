@@ -12,8 +12,8 @@ CH5: L1
     Write a function that copies all contents from src dir to dest dir 
     (static to public):
         [x] first delete everything from public
-        [] copy all files and folders, nested folder into public
-        [] log path of each file thats copied for debugging
-        [] hook function to main function and test manually with file system
-        [] add public directory to .gitignore file.
+        [x] copy all files and folders, nested folder into public
+        [x] log path of each file thats copied for debugging
+        [x] hook function to main function and test manually with file system
+        [x] add public directory to .gitignore file.
         [] check main.sh generates the public dir and everything is copied correctly
