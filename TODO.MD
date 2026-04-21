@@ -34,3 +34,13 @@ CH5: L2
             [x] write new full html page to file at      {dest_path}, create necessary dirs if not existing
         [x] update main.py to  generate a page from content/index.md using tempalte.html to write to public/index.html
         [x] main.sh script should start a web server after generating the site, same as before
+
+CH5:L2
+    Create more pages:
+        [x] add following markdown files:
+            * content/blog/glorfindel/index.md
+            * content/blog/tom/index.md
+            * content/blog/majesty/index.md
+            * content/contact/index.md
+        [] add images from bootdev into static/images dir
+        [] run generator to copy from static to public dir
