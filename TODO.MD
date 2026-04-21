@@ -61,6 +61,6 @@ CH5:L5
     Create a build.sh script which builds site for production:
         [x] script should have github repo name as 3rd argument
 
-        [] update main to build site into docs not public anymore for github usage.
-        [] delete public dir and remove from .gitignore
+        [x] update main to build site into docs not public anymore for github usage.
+        [x] delete public dir and remove from .gitignore
         [] setup github repo setting and config publishing source

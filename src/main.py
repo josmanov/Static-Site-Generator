@@ -13,11 +13,11 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.dirname(script_dir)
     source_dir = os.path.join(script_dir, "static")
-    dest_dir = os.path.join(repo_root, "public")
+    dest_dir = os.path.join(repo_root, "docs")
     template_path = os.path.join(repo_root, "template.html")
     content_dir = os.path.join(repo_root, "content")
 
-    clear_public_dir(dest_dir)
+    clear_output_dir(dest_dir)
     copy_directory_recursive(source_dir, dest_dir)
     generate_pages_recursive(content_dir, template_path, dest_dir, basepath)
 
@@ -62,13 +62,13 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, bas
             dest_path = os.path.join(dest_dir_path, dest_relative_path)
             generate_page(from_path, template_path, dest_path, basepath)
 
-def clear_public_dir(public_dir):
-    if not os.path.exists(public_dir):
-        os.mkdir(public_dir)
+def clear_output_dir(output_dir):
+    if not os.path.exists(output_dir):
+        os.mkdir(output_dir)
         return
 
-    for item in os.listdir(public_dir):
-        item_path = os.path.join(public_dir, item)
+    for item in os.listdir(output_dir):
+        item_path = os.path.join(output_dir, item)
         if os.path.isfile(item_path):
             os.remove(item_path)
         else:
