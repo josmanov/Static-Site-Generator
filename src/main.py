@@ -8,8 +8,9 @@ def main():
     url = "https://www.boot.dev"
     result = TextNode(text, text_type, url)
     script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.dirname(script_dir)
     source_dir = os.path.join(script_dir, "static")
-    dest_dir = os.path.join(script_dir, "public")
+    dest_dir = os.path.join(repo_root, "public")
     clear_public_dir(dest_dir)
     copy_directory_recursive(source_dir, dest_dir)
 
