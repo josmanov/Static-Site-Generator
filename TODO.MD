@@ -49,6 +49,6 @@ CH5:L4
     Recursvely generate pages using dir path content template path and dest dir path:
         [x] crawl into every entry in content directroy
         [x] each markdown file found, genereate new .html file using template
-        [] write them into public dir in same structure
-        [] update main to use recursion instead of one page generation
+        [x] write them into public dir in same structure
+        [x] update main to use recursion instead of one page generation
         
