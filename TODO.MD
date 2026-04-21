@@ -58,7 +58,9 @@ CH5:L5
         [x] pass basepath to page gen recursive and page gen functions
         [x] in generate_page after replacing placeholder, replace instances of href"/ with basepath same with src
 
-    Create a build.sh script which build site for production:
-        [] script should have github repo name as 3rd argument
+    Create a build.sh script which builds site for production:
+        [x] script should have github repo name as 3rd argument
 
-    Update 
+        [] update main to build site into docs not public anymore for github usage.
+        [] delete public dir and remove from .gitignore
+        [] setup github repo setting and config publishing source
