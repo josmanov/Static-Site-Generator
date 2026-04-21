@@ -41,6 +41,18 @@ def generate_page(from_path, template_path, dest_path):
     with open(dest_path, "w", encoding="utf-8") as destination_file:
         destination_file.write(page_html)
 
+
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+    for root, _, files in os.walk(dir_path_content):
+        for file_name in files:
+            if not file_name.endswith(".md"):
+                continue
+
+            from_path = os.path.join(root, file_name)
+            html_file_name = os.path.splitext(file_name)[0] + ".html"
+            dest_path = os.path.join(dest_dir_path, html_file_name)
+            generate_page(from_path, template_path, dest_path)
+
 def clear_public_dir(public_dir):
     if not os.path.exists(public_dir):
         os.mkdir(public_dir)

@@ -35,7 +35,7 @@ CH5: L2
         [x] update main.py to  generate a page from content/index.md using tempalte.html to write to public/index.html
         [x] main.sh script should start a web server after generating the site, same as before
 
-CH5:L2
+CH5:L3
     Create more pages:
         [x] add following markdown files:
             * content/blog/glorfindel/index.md
@@ -44,3 +44,11 @@ CH5:L2
             * content/contact/index.md
         [x] add images from bootdev into static/images dir
         [x] run generator to copy from static to public dir
+
+CH5:L4
+    Recursvely generate pages using dir path content template path and dest dir path:
+        [x] crawl into every entry in content directroy
+        [x] each markdown file found, genereate new .html file using template
+        [] write them into public dir in same structure
+        [] update main to use recursion instead of one page generation
+        
