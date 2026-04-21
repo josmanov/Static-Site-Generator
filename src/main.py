@@ -1,6 +1,7 @@
 from textnode import TextNode
 import os
 import shutil
+from block import markdown_to_html_node
 
 def main():
     text = "This is some anchor text"
@@ -22,6 +23,8 @@ def generate_page(from_path, template_path, dest_path):
 
     with open(from_path, "r", encoding="utf-8") as markdown_file:
         markdown_contents = markdown_file.read()
+
+    html_string = markdown_to_html_node(markdown_contents).to_html()
 
     with open(template_path, "r", encoding="utf-8") as template_file:
         template_contents = template_file.read()

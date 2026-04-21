@@ -27,4 +27,8 @@ CH5: L2
             [x] print message "generating page from {src_path} to {dest_path} using {template_path}"
             [x] read markdown file at from path and store contents
             [x] read the template file at template_path and store contents
-            [] use markodwn to html node function and to_html method to convert markdown file to html string
+            [x] use markodwn to html node function and to_html method to convert markdown file to html string
+            [] use extract title function to grab title of page
+            [] replace the {{ Title }} and {{ Content }}
+                placeholders in template with html and title generated
+            
