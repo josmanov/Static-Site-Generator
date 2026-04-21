@@ -42,5 +42,5 @@ CH5:L2
             * content/blog/tom/index.md
             * content/blog/majesty/index.md
             * content/contact/index.md
-        [] add images from bootdev into static/images dir
-        [] run generator to copy from static to public dir
+        [x] add images from bootdev into static/images dir
+        [x] run generator to copy from static to public dir
