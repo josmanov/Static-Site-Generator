@@ -1,19 +1,19 @@
-from textnode import TextNode
 import os
 import shutil
 from block import markdown_to_html_node, extract_title
 
 def main():
-    text = "This is some anchor text"
-    text_type = "link"
-    url = "https://www.boot.dev"
-    result = TextNode(text, text_type, url)
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.dirname(script_dir)
     source_dir = os.path.join(script_dir, "static")
     dest_dir = os.path.join(repo_root, "public")
+    template_path = os.path.join(repo_root, "template.html")
+    content_path = os.path.join(repo_root, "content", "index.md")
+    index_dest_path = os.path.join(dest_dir, "index.html")
+
     clear_public_dir(dest_dir)
     copy_directory_recursive(source_dir, dest_dir)
+    generate_page(content_path, template_path, index_dest_path)
 
 
 def generate_page(from_path, template_path, dest_path):
