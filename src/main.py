@@ -14,6 +14,18 @@ def main():
     clear_public_dir(dest_dir)
     copy_directory_recursive(source_dir, dest_dir)
 
+
+def generate_page(from_path, template_path, dest_path):
+    print(
+        f"Generating page from {from_path} to {dest_path} using {template_path}"
+    )
+
+    with open(from_path, "r", encoding="utf-8") as markdown_file:
+        markdown_contents = markdown_file.read()
+
+    with open(template_path, "r", encoding="utf-8") as template_file:
+        template_contents = template_file.read()
+
 def clear_public_dir(public_dir):
     if not os.path.exists(public_dir):
         os.mkdir(public_dir)

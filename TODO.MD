@@ -23,4 +23,8 @@ CH5: L2
     Generate and serve a webpage:
         [x] Create a function that extract title from markdown
         [x] write test unit for it
-        [] create a function that generage the page using a src_path the template path and dest_path
+        [x] create a function that generage the page using a src_path the template path and dest_path
+            [x] print message "generating page from {src_path} to {dest_path} using {template_path}"
+            [x] read markdown file at from path and store contents
+            [x] read the template file at template_path and store contents
+            [] use markodwn to html node function and to_html method to convert markdown file to html string
