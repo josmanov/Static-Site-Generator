@@ -28,7 +28,9 @@ CH5: L2
             [x] read markdown file at from path and store contents
             [x] read the template file at template_path and store contents
             [x] use markodwn to html node function and to_html method to convert markdown file to html string
-            [] use extract title function to grab title of page
-            [] replace the {{ Title }} and {{ Content }}
+            [x] use extract title function to grab title of page
+            [x] replace the {{ Title }} and {{ Content }}
                 placeholders in template with html and title generated
-            
+            [] write new full html page to file at      {dest_path}, create necessary dirs if not existing
+        [] update main.py to  generate a page from content/index.md using tempalte.html to write to public/index.html
+        [] main.sh script should start a web server after generating the site, same as before

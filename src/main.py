@@ -1,7 +1,7 @@
 from textnode import TextNode
 import os
 import shutil
-from block import markdown_to_html_node
+from block import markdown_to_html_node, extract_title
 
 def main():
     text = "This is some anchor text"
@@ -24,10 +24,17 @@ def generate_page(from_path, template_path, dest_path):
     with open(from_path, "r", encoding="utf-8") as markdown_file:
         markdown_contents = markdown_file.read()
 
+    title = extract_title(markdown_contents)
     html_string = markdown_to_html_node(markdown_contents).to_html()
 
     with open(template_path, "r", encoding="utf-8") as template_file:
         template_contents = template_file.read()
+
+    page_html = template_contents.replace("{{ Title }}", title).replace(
+        "{{ Content }}", html_string
+    )
+
+    return page_html
 
 def clear_public_dir(public_dir):
     if not os.path.exists(public_dir):
