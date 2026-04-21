@@ -34,7 +34,12 @@ def generate_page(from_path, template_path, dest_path):
         "{{ Content }}", html_string
     )
 
-    return page_html
+    dest_dir = os.path.dirname(dest_path)
+    if dest_dir:
+        os.makedirs(dest_dir, exist_ok=True)
+
+    with open(dest_path, "w", encoding="utf-8") as destination_file:
+        destination_file.write(page_html)
 
 def clear_public_dir(public_dir):
     if not os.path.exists(public_dir):
