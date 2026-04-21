@@ -9,6 +9,14 @@ from textnode import TextNode, TextType
 
 import re
 
+
+def extract_title(markdown):
+    for line in markdown.split("\n"):
+        stripped = line.strip()
+        if re.match(r"^#\s+", stripped):
+            return stripped[1:].strip()
+    raise Exception("No h1 header found")
+
 def markdown_to_blocks(markdown):
     raw_blocks = markdown.split("\n\n")
 

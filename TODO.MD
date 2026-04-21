@@ -18,3 +18,9 @@ CH5: L1
         [x] add public directory to .gitignore file.
         [x] check main.sh generates the public dir and everything is copied correctly
         [x] fix wrong path for index.css file
+
+CH5: L2
+    Generate and serve a webpage:
+        [x] Create a function that extract title from markdown
+        [x] write test unit for it
+        [] create a function that generage the page using a src_path the template path and dest_path

@@ -1,5 +1,5 @@
 import unittest
-from block import markdown_to_blocks, block_to_block_type, BlockType, quote_to_html, unordered_to_html, ordered_to_html, paragraph_to_html, markdown_to_html_node
+from block import markdown_to_blocks, block_to_block_type, BlockType, quote_to_html, unordered_to_html, ordered_to_html, paragraph_to_html, markdown_to_html_node, extract_title
 
 class TestMarkdownToBlocks(unittest.TestCase):
 
@@ -97,6 +97,15 @@ This is a paragraph of text. It has some **bold** and _italic_ words inside of i
         markdown = "# Title\n\n> quote"
         node = markdown_to_html_node(markdown)
         self.assertEqual(node.to_html(), "<div><h1>Title</h1><blockquote>quote</blockquote></div>")
+
+    def test_extract_title(self):
+        self.assertEqual(extract_title("# Hello"), "Hello")
+        self.assertEqual(extract_title("#   Hello World   "), "Hello World")
+
+    def test_extract_title_raises_if_missing_h1(self):
+        markdown = "## Not title\n\nParagraph text"
+        with self.assertRaises(Exception):
+            extract_title(markdown)
 
 
 if __name__ == "__main__":
