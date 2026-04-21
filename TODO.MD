@@ -51,4 +51,14 @@ CH5:L4
         [x] each markdown file found, genereate new .html file using template
         [x] write them into public dir in same structure
         [x] update main to use recursion instead of one page generation
-        
+
+CH5:L5
+    Create config usage instead of hardcode localhost
+        [x] use sys.argv and store to basepath, if not provided default to /
+        [x] pass basepath to page gen recursive and page gen functions
+        [x] in generate_page after replacing placeholder, replace instances of href"/ with basepath same with src
+
+    Create a build.sh script which build site for production:
+        [] script should have github repo name as 3rd argument
+
+    Update 

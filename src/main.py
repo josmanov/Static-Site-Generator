@@ -1,8 +1,15 @@
 import os
 import shutil
+import sys
 from block import markdown_to_html_node, extract_title
 
 def main():
+    basepath = sys.argv[1] if len(sys.argv) > 1 else "/"
+    if not basepath.startswith("/"):
+        basepath = f"/{basepath}"
+    if not basepath.endswith("/"):
+        basepath = f"{basepath}/"
+
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.dirname(script_dir)
     source_dir = os.path.join(script_dir, "static")
@@ -12,10 +19,10 @@ def main():
 
     clear_public_dir(dest_dir)
     copy_directory_recursive(source_dir, dest_dir)
-    generate_pages_recursive(content_dir, template_path, dest_dir)
+    generate_pages_recursive(content_dir, template_path, dest_dir, basepath)
 
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, basepath):
     print(
         f"Generating page from {from_path} to {dest_path} using {template_path}"
     )
@@ -32,6 +39,8 @@ def generate_page(from_path, template_path, dest_path):
     page_html = template_contents.replace("{{ Title }}", title).replace(
         "{{ Content }}", html_string
     )
+    page_html = page_html.replace('href="/', f'href="{basepath}')
+    page_html = page_html.replace('src="/', f'src="{basepath}')
 
     dest_dir = os.path.dirname(dest_path)
     if dest_dir:
@@ -41,7 +50,7 @@ def generate_page(from_path, template_path, dest_path):
         destination_file.write(page_html)
 
 
-def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath):
     for root, _, files in os.walk(dir_path_content):
         for file_name in files:
             if not file_name.endswith(".md"):
@@ -51,7 +60,7 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
             relative_path = os.path.relpath(from_path, dir_path_content)
             dest_relative_path = os.path.splitext(relative_path)[0] + ".html"
             dest_path = os.path.join(dest_dir_path, dest_relative_path)
-            generate_page(from_path, template_path, dest_path)
+            generate_page(from_path, template_path, dest_path, basepath)
 
 def clear_public_dir(public_dir):
     if not os.path.exists(public_dir):
